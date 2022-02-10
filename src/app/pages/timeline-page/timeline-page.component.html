@@ -1,0 +1,28 @@
+<div class="timeline-page flex-column flex-gap-16px">
+  <app-timeline
+    [newsList]="(news$ | async) ?? []"
+    (gotToEnd)="loadNextPage()"
+  ></app-timeline>
+
+  <div
+    class="loading-more-message flex-column flex-gap-8px"
+    [ngSwitch]="!!(loading$ | async)"
+  >
+    <div *ngSwitchCase="true">
+      <div class="spinner"></div>
+      <small>Loading more news</small>
+    </div>
+
+    <div class="load-more-button" *ngSwitchCase="false">
+      <div [ngSwitch]="!!(listEnded$ | async)">
+        <div *ngSwitchCase="true">
+          <small>No more news to load</small>
+        </div>
+
+        <div class="load-more-button" *ngSwitchCase="false">
+          <button *inView="loadNextPage">Load more</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

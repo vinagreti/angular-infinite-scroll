@@ -1,0 +1,5 @@
+<div class="flex-column flex-gap-8px">
+  <ng-container *ngFor="let news of newsList; trackBy: trackBy">
+    <app-news-card [news]="news"></app-news-card>
+  </ng-container>
+</div>

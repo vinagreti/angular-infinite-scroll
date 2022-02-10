@@ -1,0 +1,13 @@
+<div class="news-card flex-column flex-gap-8px" [@onCreate]>
+  <div class="news-card-title">
+    <h3>{{ news.title }}</h3>
+  </div>
+  <div class="news-card-image">
+    <img
+      *ngIf="news.field_photo_image_section"
+      src="https://www.pinkvilla.com/{{ news.field_photo_image_section }}"
+      alt="news-image"
+      srcset=""
+    />
+  </div>
+</div>
